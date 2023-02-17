@@ -1,29 +1,16 @@
 pipeline {
   agent any
   
-  parameters {
-    string(name: 'GOOGLE_CREDENTIALS', defaultValue: '', description: 'Google Cloud Platform service account credentials in JSON format')
-    string(name: 'PROJECT_ID', defaultValue: '', description: 'Google Cloud Platform project ID')
-    string(name: 'REGION', defaultValue: 'us-central1', description: 'Google Cloud Platform region')
-    string(name: 'TF_VAR_app_name', defaultValue: 'my-app', description: 'The name of the application')
-    string(name: 'TF_VAR_env', defaultValue: 'dev', description: 'The environment for the infrastructure (dev/staging/prod)')
-  }
+  
   
   stages {
     stage('Checkout') {
       steps {
-        git branch: 'main', url: 'https://github.com/<your-terraform-repo>'
+        git branch: 'main', url: 'https://github.com/pavanpalveproject/jenkins-pipeline'
       }
     }
     
-    stage('Install Terraform') {
-      steps {
-        sh 'wget https://releases.hashicorp.com/terraform/1.0.9/terraform_1.0.9_linux_amd64.zip'
-        sh 'unzip terraform_1.0.9_linux_amd64.zip'
-        sh 'sudo mv terraform /usr/local/bin'
-        sh 'terraform version'
-      }
-    }
+    
     
     stage('Terraform Init') {
       steps {
@@ -37,22 +24,6 @@ pipeline {
       }
     }
     
-    stage('Terraform Apply') {
-      steps {
-        sh 'terraform apply -auto-approve tfplan'
-      }
-    }
     
-    stage('Deploy Application') {
-      steps {
-        sh 'gcloud app deploy'
-      }
-    }
-    
-    stage('Cleanup') {
-      steps {
-        sh 'terraform destroy -auto-approve -var app_name=${TF_VAR_app_name} -var env=${TF_VAR_env}'
-      }
-    }
   }
 }
