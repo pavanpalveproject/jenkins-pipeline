@@ -5,8 +5,17 @@ terraform {
     }
   }
 }
+
+data "google_secret_manager_secret_version" "service_account_key" {
+  provider = google-beta
+
+  secret = "projects/o-media-practice/secrets/jenkins-to-gcp"
+}
+
+
+
 provider "google" {
-  credentials = file("/path/to/service-account-key.json")
+  credentials = jsondecode(data.google_secret_manager_secret_version.service_account_key.payload_data)
   project     = "o-media-practice"
   region      = "asia-south1"
 }
