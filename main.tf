@@ -8,7 +8,7 @@ terraform {
 provider "google" {
   credentials = file("/path/to/service-account-key.json")
   project     = "o-media-practice"
-  region      = "us-central1"
+  region      = "asia-south1"
 }
 
 
@@ -16,7 +16,7 @@ resource "google_compute_instance" "my-cicd-vm" {
   name         = "cicd-vms"
   machine_type = "e2-small"
   project = "o-media-practice"
-  zone     = "us-central1-a"
+  zone     = "asia-south1-a"
 
  
 
