@@ -6,6 +6,12 @@ terraform {
   }
 }
 
+resource "google_secret_manager_secret_version" "credentials" {
+  provider = google-beta
+
+  secret = "projects/o-media-practice/secrets/jenkins-to-gcp/versions/latest"
+}
+
 data "google_secret_manager_secret_version" "service_account_key" {
   provider = google-beta
 
