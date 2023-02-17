@@ -6,9 +6,11 @@ terraform {
   }
 }
 provider "google" {
-  region = var.region
-  zone   = var.zone
+  credentials = file("/path/to/service-account-key.json")
+  project     = "o-media-practice"
+  region      = "us-central1"
 }
+
 
 resource "google_compute_instance" "my-cicd-vm" {
   name         = "cicd-vms"
