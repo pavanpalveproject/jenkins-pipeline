@@ -6,25 +6,25 @@ terraform {
   }
 }
 
-resource "google_secret_manager_secret_version" "credentials" {
-  provider = google-beta
+# resource "google_secret_manager_secret_version" "credentials" {
+#   provider = google-beta
 
-  secret = "projects/o-media-practice/secrets/jenkins-to-gcp/versions/latest"
-}
+#   secret = "projects/o-media-practice/secrets/jenkins-to-gcp/versions/latest"
+# }
 
-data "google_secret_manager_secret_version" "service_account_key" {
-  provider = google-beta
+# data "google_secret_manager_secret_version" "service_account_key" {
+#   provider = google-beta
 
-  secret = "projects/o-media-practice/secrets/jenkins-to-gcp"
-}
+#   secret = "projects/o-media-practice/secrets/jenkins-to-gcp"
+# }
 
 
 
-provider "google" {
-  credentials = jsondecode(data.google_secret_manager_secret_version.service_account_key.payload_data)
-  project     = "o-media-practice"
-  region      = "asia-south1"
-}
+# provider "google" {
+#   credentials = jsondecode(data.google_secret_manager_secret_version.service_account_key.payload_data)
+#   project     = "o-media-practice"
+#   region      = "asia-south1"
+# }
 
 
 resource "google_compute_instance" "my-cicd-vm" {
