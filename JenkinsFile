@@ -2,7 +2,7 @@ pipeline {
   agent any
   
   environment {
-        CLOUDSDK_CORE_PROJECT='inavolan' 
+        CLOUDSDK_CORE_PROJECT='o-media-practice' 
     }
   
   stages {
