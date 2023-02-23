@@ -2,7 +2,7 @@ terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
-      project     = "o-media-practice"
+      project     = "o-media-2"
     }
   }
 }
