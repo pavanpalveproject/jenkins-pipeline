@@ -6,22 +6,26 @@ terraform {
   }
 }
 
-resource "google_secret_manager_secret_version" "credentials" {
-  provider = google-beta
+# resource "google_secret_manager_secret_version" "credentials" {
+#   provider = google-beta
 
-  secret = "projects/o-media-2/secrets/key-jenkins/versions/latest"
-}
+#   secret = "projects/o-media-2/secrets/key-jenkins/versions/latest"
+# }
 
-data "google_secret_manager_secret_version" "service_account_key" {
-  provider = google-beta
+# data "google_secret_manager_secret_version" "service_account_key" {
+#   provider = google-beta
 
-  secret = "projects/o-media-2/secrets/key-jenkins"
-}
+#   secret = "projects/o-media-2/secrets/key-jenkins"
+# }
 
+# data "google_secret_manager_secret_version" "key" {
+#   provider = google-beta
+#   secret   = "admin-username"
+# }
 
 
 provider "google" {
-  credentials = jsondecode(data.google_secret_manager_secret_version.service_account_key.payload_data)
+  # credentials = jsondecode(data.google_secret_manager_secret_version.service_account_key.payload_data)
   project     = "o-media-2"
   region      = "asia-south1"
 }
