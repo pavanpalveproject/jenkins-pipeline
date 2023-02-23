@@ -21,7 +21,7 @@ terraform {
 
 
 provider "google" {
-  credentials = jsondecode(data.google_secret_manager_secret_version.service_account_key.payload_data)
+  credentials = jsondecode(data.google_secret_manager_secret_version.key-jenkins.payload_data)
   project     = "o-media-2"
   region      = "asia-south1"
 }
