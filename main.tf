@@ -2,7 +2,6 @@ terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
-      project     = "o-media-2"
     }
   }
 }
@@ -21,11 +20,11 @@ terraform {
 
 
 
-# provider "google" {
-#   credentials = jsondecode(data.google_secret_manager_secret_version.service_account_key.payload_data)
-#   project     = "o-media-practice"
-#   region      = "asia-south1"
-# }
+provider "google" {
+  # credentials = jsondecode(data.google_secret_manager_secret_version.service_account_key.payload_data)
+  project     = "o-media-2"
+  region      = "asia-south1"
+}
 
 
 resource "google_compute_instance" "my-cicd-vm" {
