@@ -30,7 +30,7 @@ terraform {
 resource "google_compute_instance" "my-cicd-vm" {
   name         = "cicd-vms"
   machine_type = "e2-small"
-  project = "o-media-practice"
+  project = "o-media-2"
   zone     = "asia-south1-a"
 
  
