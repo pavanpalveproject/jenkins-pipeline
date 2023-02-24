@@ -25,7 +25,7 @@ terraform {
 
 
 provider "google" {
-  credentials = file("/home/pavan_palve_project/jenkins-sa-key.json")
+  # credentials = file("/home/pavan_palve_project/jenkins-sa-key.json")
   project     = "o-media-practice"
   region      = "asia-south1"
 }
