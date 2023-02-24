@@ -31,34 +31,58 @@ provider "google" {
 }
 
 
-resource "google_compute_instance" "my-cicd-vm" {
-  name         = "cicd-vms"
-  machine_type = "e2-small"
-  project = "o-media-2"
-  zone     = "asia-south1-a"
+# resource "google_compute_instance" "my-cicd-vm" {
+#   name         = "cicd-vms"
+#   machine_type = "e2-small"
+#   project = "o-media-2"
+#   zone     = "asia-south1-a"
 
  
 
-  tags = ["allow-firewall"]
+#   tags = ["allow-firewall"]
 
  
 
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-      labels = {
-        my_label = "value"
-      }
+#   boot_disk {
+#     initialize_params {
+#       image = "debian-cloud/debian-11"
+#       labels = {
+#         my_label = "value"
+#       }
+#     }
+#   }
+
+ 
+
+#   network_interface {
+#     network = "default"
+
+ 
+
+#   }
+#   allow_stopping_for_update = true
+# }
+
+resource "google_storage_bucket" "auto-expire" {
+  name          = "auto-expiring-bucket"
+  location      = "US"
+  force_destroy = true
+
+  lifecycle_rule {
+    condition {
+      age = 3
+    }
+    action {
+      type = "Delete"
     }
   }
 
- 
-
-  network_interface {
-    network = "default"
-
- 
-
+  lifecycle_rule {
+    condition {
+      age = 1
+    }
+    action {
+      type = "AbortIncompleteMultipartUpload"
+    }
   }
-  allow_stopping_for_update = true
 }
