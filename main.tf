@@ -25,8 +25,8 @@ terraform {
 
 
 provider "google" {
-  # credentials = jsondecode(data.google_secret_manager_secret_version.service_account_key.payload_data)
-  project     = "o-media-2"
+  credentials = file("/home/pavan_palve_project/jenkins-sa-key.json")
+  project     = "o-media-practice"
   region      = "asia-south1"
 }
 
@@ -34,7 +34,7 @@ provider "google" {
 resource "google_compute_instance" "my-cicd-vm" {
   name         = "cicd-vms"
   machine_type = "e2-small"
-  project = "o-media-2"
+  project = "o-media-practice"
   zone     = "asia-south1-a"
 
  
