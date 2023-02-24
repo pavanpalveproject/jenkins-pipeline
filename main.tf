@@ -25,7 +25,7 @@ terraform {
 
 
 provider "google" {
-  # credentials = file("/home/pavan_palve_project/jenkins-sa-key.json")
+  # credentials = file("/home/pavan_palve_project/jenkins-sa-key.json")       #not_used
   project     = "o-media-2"
   region      = "asia-south1"
 }
