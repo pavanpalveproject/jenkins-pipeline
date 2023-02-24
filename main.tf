@@ -63,8 +63,8 @@ provider "google" {
 #   allow_stopping_for_update = true
 # }
 
-resource "google_storage_bucket" "auto-expire" {
-  name          = "auto-expiring-bucket"
+resource "google_storage_bucket" "auto-1" {
+  name          = "auto-expiring-bucket123bbbcvbdfg"
   location      = "US"
   force_destroy = true
 
