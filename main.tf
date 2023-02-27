@@ -64,7 +64,7 @@ provider "google" {
 # }
 
 resource "google_storage_bucket" "auto-1" {
-  name          = "auto-expiring-bucket123bbbcvbdfg"
+  name          = "auto-expiring-bucket123bbbcvbdfgq"
   location      = "US"
   force_destroy = true
 
