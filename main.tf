@@ -31,37 +31,37 @@ provider "google" {
 }
 
 
-# resource "google_compute_instance" "my-cicd-vm" {
-#   name         = "cicd-vms"
-#   machine_type = "e2-small"
-#   project = "o-media-2"
-#   zone     = "asia-south1-a"
+resource "google_compute_instance" "my-cicd-vm" {
+  name         = "cicd-vms"
+  machine_type = "e2-small"
+  project = "o-media-2"
+  zone     = "asia-south1-a"
 
  
 
-#   tags = ["allow-firewall"]
+  tags = ["allow-firewall"]
 
  
 
-#   boot_disk {
-#     initialize_params {
-#       image = "debian-cloud/debian-11"
-#       labels = {
-#         my_label = "value"
-#       }
-#     }
-#   }
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+      labels = {
+        my_label = "value"
+      }
+    }
+  }
 
  
 
-#   network_interface {
-#     network = "default"
+  network_interface {
+    network = "default"
 
  
 
-#   }
-#   allow_stopping_for_update = true
-# }
+  }
+  allow_stopping_for_update = true
+}
 
 resource "google_storage_bucket" "auto-1" {
   name          = "auto-expiring-bucket123bbbcvbdfgq"
