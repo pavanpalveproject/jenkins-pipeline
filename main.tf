@@ -25,8 +25,8 @@ terraform {
 
 
 provider "google" {
-  # credentials = file("/home/pavan_palve_project/o-media-2-59c02dc0d3cb.json")       #not_used
-  credentials = $GOOGLE_APPLICATION_CREDENTIALS
+  credentials = file("/home/pavan_palve_project/o-media-2-59c02dc0d3cb.json")       #not_used
+  # credentials = $GOOGLE_APPLICATION_CREDENTIALS
   project     = "o-media-2"
   region      = "asia-south1"
 }
