@@ -64,49 +64,49 @@ resource "google_compute_instance" "my-cicd-vm" {
   allow_stopping_for_update = true
 }
 
-resource "google_storage_bucket" "auto-1" {
-  name          = "auto-expiring-bucket123bbbcvbdfgq"
-  location      = "US"
-  force_destroy = true
+# resource "google_storage_bucket" "auto-1" {
+#   name          = "auto-expiring-bucket123bbbcvbdfgq"
+#   location      = "US"
+#   force_destroy = true
 
-  lifecycle_rule {
-    condition {
-      age = 3
-    }
-    action {
-      type = "Delete"
-    }
-  }
+#   lifecycle_rule {
+#     condition {
+#       age = 3
+#     }
+#     action {
+#       type = "Delete"
+#     }
+#   }
 
-  lifecycle_rule {
-    condition {
-      age = 1
-    }
-    action {
-      type = "AbortIncompleteMultipartUpload"
-    }
-  }
-}
-resource "google_storage_bucket" "auto-2" {
-  name          = "auto-expiring-bucket123bbbcvbdfgq11"
-  location      = "US"
-  force_destroy = true
+#   lifecycle_rule {
+#     condition {
+#       age = 1
+#     }
+#     action {
+#       type = "AbortIncompleteMultipartUpload"
+#     }
+#   }
+# }
+# resource "google_storage_bucket" "auto-2" {
+#   name          = "auto-expiring-bucket123bbbcvbdfgq11"
+#   location      = "US"
+#   force_destroy = true
 
-  lifecycle_rule {
-    condition {
-      age = 3
-    }
-    action {
-      type = "Delete"
-    }
-  }
+#   lifecycle_rule {
+#     condition {
+#       age = 3
+#     }
+#     action {
+#       type = "Delete"
+#     }
+#   }
 
-  lifecycle_rule {
-    condition {
-      age = 1
-    }
-    action {
-      type = "AbortIncompleteMultipartUpload"
-    }
-  }
-}
+#   lifecycle_rule {
+#     condition {
+#       age = 1
+#     }
+#     action {
+#       type = "AbortIncompleteMultipartUpload"
+#     }
+#   }
+# }
