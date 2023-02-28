@@ -38,7 +38,11 @@ resource "google_compute_instance" "my-cicd-vm" {
   project = "o-media-2"
   zone     = "asia-south1-a"
 
+ 
+
   tags = ["allow-firewall"]
+
+ 
 
   boot_disk {
     initialize_params {
@@ -49,10 +53,14 @@ resource "google_compute_instance" "my-cicd-vm" {
     }
   }
 
+ 
+
   network_interface {
     network = "default"
+
+ 
+
   }
-  
   allow_stopping_for_update = true
 }
 
